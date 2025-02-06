@@ -1,0 +1,77 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+  background-color: rgba(240, 240, 240, 0.853);
+  border: solid 1px black;
+  height: 500px;
+
+  .render-button {
+    width: fit-content;
+    place-content: center;
+    background-color: green;
+  }
+
+  .markdown-container {
+    display: flex;
+    background-color: rgba(240, 240, 240, 0.853);
+    padding: 5px;
+    color: black;
+    width: 90%;
+    height: 100%;
+
+    .editor {
+      background-color: white;
+      border: solid 1px black;
+      margin: 4px;
+      color: black;
+      resize: none;
+      min-width: 50%;
+      max-width: 50%;
+      padding: 10px;
+      height: 85%;
+    }
+
+    .display {
+      background-color: white;
+      border: solid 1px black;
+      margin: 4px;
+      width: 50%;
+      min-width: 50%;
+      max-width: 50%;
+      padding: 10px;
+      height: 85%;
+      overflow-y: auto;
+      word-break: break-word;
+
+      .markdown {
+        color: #374151;
+        font-size: 1rem;
+        max-width: 100%;
+
+        .boxed-content {
+          font-family: "Courier New";
+          padding: 10px;
+          background-color: #d0e2f3;
+          border: solid 1px black;
+          color: black;
+          display: block;
+          white-space: pre-wrap;
+        }
+      }
+      .markdown > * {
+        margin: 0;
+        padding: 0;
+        line-height: 1rem;
+      }
+      h1 {
+        font-size: 11pt;
+      }
+      .robotic {
+        font-family: "Courier New";
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
