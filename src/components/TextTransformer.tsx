@@ -1,14 +1,16 @@
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
+
 import { transformText } from "../utils/helpers";
+import CustomCode from "./CustomCode";
 
 const MarkdownRenderer = ({ text }: { text: string }) => {
   return (
     <ReactMarkdown
-      className="markdown"
       remarkPlugins={[remarkBreaks]}
       rehypePlugins={[rehypeRaw]}
+      className="markdown"
       components={{
         code: CustomCode,
       }}
@@ -19,19 +21,3 @@ const MarkdownRenderer = ({ text }: { text: string }) => {
 };
 
 export default MarkdownRenderer;
-
-const CustomCode = ({
-  inline,
-  children,
-}: {
-  inline?: boolean;
-  children?: React.ReactNode;
-}) => {
-  const codeText = String(children);
-
-  if (!inline && codeText.includes("\n")) {
-    return <div className="boxed-content">{codeText}</div>;
-  }
-
-  return <code>{codeText}</code>;
-};
