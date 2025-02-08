@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
+import { transformText } from "../utils/helpers";
 
 const MarkdownRenderer = ({ text }: { text: string }) => {
   return (
@@ -18,22 +19,6 @@ const MarkdownRenderer = ({ text }: { text: string }) => {
 };
 
 export default MarkdownRenderer;
-
-const transformText = (text: string) => {
-  const codeBlocks: string[] = [];
-  text = text.replace(/```([\s\S]+?)```/g, (match) => {
-    codeBlocks.push(match); 
-    return `CODE_BLOCK_${codeBlocks.length - 1}`; 
-  });
-  text = text.replace(/`([^`\n]+)`/g, `<span className="robotic">$1</span>`);
-  text = text.replace(/\.\n/g, "\n");
-  text = text.replace(/\n(?!CODE_BLOCK_\d+)/g, "<br>\n");
-  text = text.replace(
-    /CODE_BLOCK_(\d+)/g,
-    (_, index) => codeBlocks[Number(index)]
-  );
-  return text;
-};
 
 const CustomCode = ({
   inline,
