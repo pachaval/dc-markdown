@@ -1,35 +1,64 @@
 import { useState, useEffect } from "react";
-
-import MarkdownRenderer from "./TextTransformer";
-
 import "../styles/markdown.css";
+import MarkdownRenderer from "./TextTransformer";
 
 const MarkdownEditor = () => {
   const initialText =
     "# Test document\n\nLets create a variable `x`, equal to 5.\n\n```\nx = 5\n```";
 
-  const [text, setText] = useState(() => {
-    return localStorage.getItem("markdown_text") || initialText;
-  });
+  const [text, setText] = useState(
+    () => localStorage.getItem("markdown_text") || initialText
+  );
+  const [displayText, setDisplayText] = useState(text);
+  const [isLive, setIsLive] = useState(
+    () => localStorage.getItem("markdown_mode") !== "manual"
+  );
 
   useEffect(() => {
     localStorage.setItem("markdown_text", text);
   }, [text]);
 
+  useEffect(() => {
+    localStorage.setItem("markdown_mode", isLive ? "live" : "manual");
+  }, [isLive]);
+
   return (
     <div className="app-container">
       <div className="markdown-container">
         <textarea
-          onChange={(e) => setText(e.target.value)}
           className="editor"
           value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+            if (isLive) setDisplayText(e.target.value);
+          }}
         />
 
         <div className="display">
-          <MarkdownRenderer text={text} />
+          <MarkdownRenderer text={displayText} />
         </div>
       </div>
-      <button className="render-button">RENDER</button>
+
+      <div className="controls">
+        <label className="toggle-label">
+          <span>Live</span>
+          <input
+            type="checkbox"
+            checked={isLive}
+            onChange={() => setIsLive(!isLive)}
+          />
+          <span>Manual</span>
+        </label>
+
+        {!isLive && (
+          <button
+            className="render-button"
+            onClick={() => setDisplayText(text)}
+          >
+            RENDER
+          </button>
+        )}
+      </div>
     </div>
   );
 };
