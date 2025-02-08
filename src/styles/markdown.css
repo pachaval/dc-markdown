@@ -10,7 +10,12 @@
   .render-button {
     width: fit-content;
     place-content: center;
-    background-color: green;
+    background-color: #93c47d;
+    border: solid 1.5px black;
+    padding: 13px;
+    font-weight: bold;
+    font-size: 15pt;
+    cursor: pointer;
   }
 
   .markdown-container {
@@ -66,7 +71,7 @@
         line-height: 1rem;
       }
       h1 {
-        font-size: 11pt;
+        font-size: 12pt;
       }
       .robotic {
         font-family: "Courier New";

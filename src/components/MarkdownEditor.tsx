@@ -4,7 +4,7 @@ import MarkdownRenderer from "./TextTransformer";
 
 const MarkdownEditor = () => {
   const [text, setText] = useState(
-    "# Test document\n\nLets create a variable 'x', equal to 5.\n\n```\nx = 5\n```"
+    "# Test document\n\nLets create a variable `x`, equal to 5.\n\n```\nx = 5\n```"
   );
 
   return (
