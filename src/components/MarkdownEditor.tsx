@@ -40,24 +40,37 @@ const MarkdownEditor = () => {
       </div>
 
       <div className="controls">
-        <label className="toggle-label">
-          <span>Live</span>
-          <input
-            type="checkbox"
-            checked={isLive}
-            onChange={() => setIsLive(!isLive)}
-          />
-          <span>Manual</span>
-        </label>
+        <div className="radio-group">
+          <label>
+            <input
+              type="radio"
+              name="mode"
+              value="live"
+              checked={isLive}
+              onChange={() => setIsLive(true)}
+            />
+            Live
+          </label>
 
-        {!isLive && (
-          <button
-            className="render-button"
-            onClick={() => setDisplayText(text)}
-          >
-            RENDER
-          </button>
-        )}
+          <label>
+            <input
+              type="radio"
+              name="mode"
+              value="manual"
+              checked={!isLive}
+              onChange={() => setIsLive(false)}
+            />
+            Manual
+          </label>
+        </div>
+
+        <button
+          onClick={() => setDisplayText(text)}
+          className="render-button"
+          disabled={isLive}
+        >
+          RENDER
+        </button>
       </div>
     </div>
   );
