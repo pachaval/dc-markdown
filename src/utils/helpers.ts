@@ -23,9 +23,7 @@ const removePeriodBeforeNewline = (text: string) => {
 };
 
 const replaceNewlinesWithBreaks = (text: string) => {
-  return text
-    .replace(/\n{2,}/g, "\n\n&nbsp;\n\n")
-    .replace(/([^\n])\n([^\n#*-])/g, "$1<br>\n$2");
+  return text.replace(/\n{2,}/g, "\n\n&nbsp;\n\n");
 };
 
 const restoreCodeBlocks = (text: string, codeBlocks: string[]) => {

@@ -8,8 +8,6 @@
   height: 500px;
 
   .render-button {
-    width: fit-content;
-    place-content: center;
     background-color: #93c47d;
     border: solid 1.5px black;
     padding: 13px;
@@ -20,6 +18,7 @@
 
   .markdown-container {
     display: flex;
+    justify-content: center;
     background-color: rgba(240, 240, 240, 0.853);
     padding: 5px;
     color: black;
@@ -42,13 +41,10 @@
       background-color: white;
       border: solid 1px black;
       margin: 4px;
-      width: 50%;
       min-width: 50%;
-      max-width: 50%;
       padding: 10px;
       height: 85%;
       overflow-y: auto;
-      word-break: break-word;
 
       .markdown {
         color: #374151;
