@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import MarkdownEditor from "./components/MarkdownEditor.tsx";
+import MarkdownApp from "./components/MarkdownApp.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MarkdownEditor />
+    <MarkdownApp />
   </StrictMode>
 );
