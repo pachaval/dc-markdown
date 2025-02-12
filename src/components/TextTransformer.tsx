@@ -1,11 +1,12 @@
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
+import { memo } from "react";
 
 import { transformText } from "../utils/helpers";
 import CustomCode from "./CustomCode";
 
-const MarkdownRenderer = ({ text }: { text: string }) => {
+const MarkdownRenderer = memo(({ text }: { text: string }) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkBreaks]}
@@ -18,6 +19,6 @@ const MarkdownRenderer = ({ text }: { text: string }) => {
       {transformText(text)}
     </ReactMarkdown>
   );
-};
+});
 
 export default MarkdownRenderer;
