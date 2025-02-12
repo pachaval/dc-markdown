@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useRef } from "react";
 
 import MarkdownEditor from "./MarkdownEditor";
 import Controls from "./Controls";
@@ -10,14 +10,16 @@ const MarkdownApp = () => {
 
   const markdownEditorRef = useRef<{ handleRender: () => void } | null>(null);
 
-  const handleModeChange = useCallback((isLive: boolean) => {
+  // REMOVED USECALLBACK
+  const handleModeChange = (isLive: boolean) => {
     setIsLive(isLive);
     localStorage.setItem("markdown_mode", isLive ? "live" : "manual");
-  }, []);
+  };
 
-  const handleRender = useCallback(() => {
+  // REMOVED USECALLBACK
+  const handleRender = () => {
     markdownEditorRef.current?.handleRender();
-  }, []);
+  };
 
   return (
     <div className="app-container">
