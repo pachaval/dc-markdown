@@ -9,14 +9,16 @@ interface MarkdownState {
   handleRender: () => void;
 }
 
+const defaultText = `# Test document\n\nLets create a variable \`x\`, equal to 5.\n\n\`\`\`\nx = 5\n\`\`\``;
+
 const useMarkdownStore = create<MarkdownState>((set, get) => ({
-  text: "# Test document\n\nLets create a variable `x`, equal to 5.\n\n```\nx = 5\n```",
-  displayText:
-    "# Test document\n\nLets create a variable `x`, equal to 5.\n\n```\nx = 5\n```",
+  text: localStorage.getItem("markdown_text") || defaultText,
+  displayText: localStorage.getItem("markdown_text") || defaultText,
   isLive: localStorage.getItem("markdown_mode") !== "manual",
 
   setText: (text: string) => {
     set({ text });
+    localStorage.setItem("markdown_text", text);
     if (get().isLive) {
       set({ displayText: text });
     }

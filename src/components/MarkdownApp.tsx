@@ -1,10 +1,14 @@
 import MarkdownEditor from "./MarkdownEditor";
 import Controls from "./Controls";
+import MarkdownDisplay from "./MarkdownDisplay";
 
 const MarkdownApp = () => {
   return (
     <div className="app-container">
-      <MarkdownEditor />
+      <div className="markdown-container">
+        <MarkdownEditor />
+        <MarkdownDisplay />
+      </div>
       <Controls />
     </div>
   );

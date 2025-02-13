@@ -4,7 +4,6 @@ import rehypeRaw from "rehype-raw";
 import { memo } from "react";
 
 import { transformText } from "../utils/helpers";
-import CustomCode from "./CustomCode";
 
 const MarkdownRenderer = memo(({ text }: { text: string }) => {
   return (
@@ -12,9 +11,6 @@ const MarkdownRenderer = memo(({ text }: { text: string }) => {
       remarkPlugins={[remarkBreaks]}
       rehypePlugins={[rehypeRaw]}
       className="markdown"
-      components={{
-        code: CustomCode,
-      }}
     >
       {transformText(text)}
     </ReactMarkdown>
