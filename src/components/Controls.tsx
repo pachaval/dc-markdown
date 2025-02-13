@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React from "react";
 import useMarkdownStore from "../store/markdownStore";
 
-const Controls: React.FC = memo(() => {
+const Controls: React.FC = () => {
   const isLive = useMarkdownStore((state) => state.isLive);
   const setLiveMode = useMarkdownStore((state) => state.setLiveMode);
   const handleRender = useMarkdownStore((state) => state.handleRender);
@@ -40,6 +40,6 @@ const Controls: React.FC = memo(() => {
       </button>
     </div>
   );
-});
+};
 
 export default Controls;
