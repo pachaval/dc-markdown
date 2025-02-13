@@ -1,16 +1,11 @@
 import React from "react";
+import useMarkdownStore from "../store/markdownStore";
 
-interface ControlsProps {
-  handleModeChange: (isLive: boolean) => void;
-  handleRender: () => void;
-  isLive: boolean;
-}
+const Controls: React.FC = () => {
+  const isLive = useMarkdownStore((state) => state.isLive);
+  const setLiveMode = useMarkdownStore((state) => state.setLiveMode);
+  const handleRender = useMarkdownStore((state) => state.handleRender);
 
-const Controls: React.FC<ControlsProps> = ({
-  handleModeChange,
-  handleRender,
-  isLive,
-}) => {
   return (
     <div className="controls">
       <div className="radio-group">
@@ -20,7 +15,7 @@ const Controls: React.FC<ControlsProps> = ({
             name="mode"
             value="live"
             checked={isLive}
-            onChange={() => handleModeChange(true)}
+            onChange={() => setLiveMode(true)}
           />
           Live
         </label>
@@ -30,7 +25,7 @@ const Controls: React.FC<ControlsProps> = ({
             name="mode"
             value="manual"
             checked={!isLive}
-            onChange={() => handleModeChange(false)}
+            onChange={() => setLiveMode(false)}
           />
           Manual
         </label>
